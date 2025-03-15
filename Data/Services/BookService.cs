@@ -15,7 +15,12 @@ namespace BookLibrary.Data.Services
 
 		public void DeleteBook(int id)
 		{
-			throw new NotImplementedException();
+			var bookToRemove = Data.Books.FirstOrDefault(b => b.Id == id);
+			if (bookToRemove == null)
+			{
+				return;
+			}
+			Data.Books.Remove(bookToRemove);
 		}
 
 		public List<Book> GetAllBooks()
@@ -25,14 +30,24 @@ namespace BookLibrary.Data.Services
 			return Data.Books.ToList();
 		}
 
-		public Book GetBookById(int id)
+		public Book? GetBookById(int id)
 		{
-			throw new NotImplementedException();
+			return Data.Books.FirstOrDefault(b => b.Id == id);
 		}
 
 		public void UpdateBook(int id, Book book)
 		{
-			throw new NotImplementedException();
+			var oldBook = Data.Books.FirstOrDefault(b => b.Id == id);
+			if (oldBook == null)
+			{
+				return;
+			}
+			oldBook.Title = book.Title;
+			oldBook.Author = book.Author;
+			oldBook.Description = book.Description;
+			oldBook.Rate = book.Rate;
+			oldBook.DateStart = book.DateStart;
+			oldBook.DateRead = book.DateRead;
 		}
 	}
 }

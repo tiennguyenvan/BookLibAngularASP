@@ -29,5 +29,29 @@ namespace BookLibrary.Controllers
         public IActionResult GetBooks() {
             return Ok(_service.GetAllBooks());
         }
+
+		// getting a book by id
+		[HttpGet("{id}")]
+        public IActionResult GetBookById(int id) {
+			var book = _service.GetBookById(id);
+			if (book == null) {
+                return NotFound();
+            }
+			return Ok(book);
+		}
+
+		// updating existing book
+		[HttpPut("{id}")]
+        public IActionResult UpdateBook(int id, [FromBody] Book book) {
+            _service.UpdateBook(id, book);
+            return Ok(book);
+        }
+
+		// deleting a book
+		[HttpDelete("{id}")]
+        public IActionResult DeleteBook(int id) {
+            _service.DeleteBook(id);
+            return Ok("Deleted");
+        }
     }
 }
