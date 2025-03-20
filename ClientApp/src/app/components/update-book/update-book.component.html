@@ -1,0 +1,42 @@
+
+<form [formGroup]="editBookForm" (ngSubmit)="onSubmit()">
+	<div class="form-group">
+		<label for="title">Title:</label>
+		<input type="text" class="form-control" id="title" required formControlName="title">
+	</div>
+	<div class="form-group">
+		<label for="author">Author:</label>
+		<input type="text" class="form-control" id="author" required
+		formControlName="author"
+		>
+	</div>
+	<div class="form-group">
+		<label for="description">Description:</label>
+		<textarea class="form-control" id="description" rows="3" required
+		formControlName="description"
+		></textarea>
+	</div>
+	<div class="row">
+		<div class="col-md-4 col-xs-4 col-sm-4">
+			<label for="rate">Rating:</label>
+			<input type="number" class="form-control" id="rate" min="1" max="10"
+			formControlName="rate"
+
+			>
+		</div>
+		<div class="col-md-4 col-xs-4 col-sm-4">
+			<label for="dateStart">Start date:</label>
+			<input type="date" class="form-control" id="dateStart"
+			formControlName="dateStart"
+			>
+		</div>
+		<div class="col-md-4 col-xs-4 col-sm-4">
+			<label for="dateRead">Read date:</label>
+			<input type="date" class="form-control" id="dateRead"
+			formControlName="dateRead"
+			>
+		</div>
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>	
+	<button class="cancel" [routerLink]="['/show-book/', bookId]">Show</button>
+</form>

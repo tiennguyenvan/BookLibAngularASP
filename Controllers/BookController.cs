@@ -21,18 +21,20 @@ namespace BookLibrary.Controllers
 		[HttpPost]
         public IActionResult CreateBook([FromBody] Book book) {
             _service.AddBook(book);
-            return Ok("Added");
+            return Ok();
         }
 
 		// get all books
 		[HttpGet]
         public IActionResult GetBooks() {
+			Console.WriteLine("Get all books");
             return Ok(_service.GetAllBooks());
         }
 
 		// getting a book by id
 		[HttpGet("{id}")]
         public IActionResult GetBookById(int id) {
+			Console.WriteLine("searching for id: " + id);
 			var book = _service.GetBookById(id);
 			if (book == null) {
                 return NotFound();
@@ -51,7 +53,7 @@ namespace BookLibrary.Controllers
 		[HttpDelete("{id}")]
         public IActionResult DeleteBook(int id) {
             _service.DeleteBook(id);
-            return Ok("Deleted");
+            return Ok();
         }
     }
 }

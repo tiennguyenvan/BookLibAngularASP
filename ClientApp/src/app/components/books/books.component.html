@@ -1,0 +1,40 @@
+<h1>All books shown</h1>
+<!-- interface Book {
+	id: number;
+	title: string;
+	author: string;
+	description: string;
+	rate: number;
+	dateStart: Date;
+	dateRead: Date;
+} -->
+<table class="table table-striped" *ngIf="books">
+	<thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Description</th>
+            <th>Rate</th>
+            <th>Date started reading</th>
+            <th>Date read</th>
+			<th>Status</th>
+			<th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books">
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.description }}</td>
+            <td>{{ book.rate }}</td>
+            <td>{{ book.dateStart | date }}</td>
+            <td>{{ book.dateRead | date }}</td>
+			<td>{{ book.dateRead ? "Read" : book.dateStart ? "Progressing" : "Not started" }}</td>
+			<td>
+				<button class="show" [routerLink]="['/show-book/', book.id]">Show</button>
+			</td>
+        </tr>
+    </tbody>
+</table>

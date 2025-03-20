@@ -32,6 +32,7 @@ namespace BookLibrary.Data.Services
 
 		public Book? GetBookById(int id)
 		{
+			Console.WriteLine("searching for id: " + id);
 			return Data.Books.FirstOrDefault(b => b.Id == id);
 		}
 

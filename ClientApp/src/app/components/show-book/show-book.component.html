@@ -1,0 +1,23 @@
+<p>show-book works!</p>
+<!-- export interface Book {
+	id: number;
+	title: string;
+	author: string;
+	description: string;
+	rate: number;
+	dateStart: Date;
+	dateRead: Date;
+} -->
+<h2>Book details:</h2>
+<div *ngIf="book">
+	<p><strong>ID:</strong> {{ book.id }}</p>
+	<p><strong>Title:</strong> {{ book.title }}</p>
+	<p><strong>Author:</strong> {{ book.author }}</p>
+	<p><strong>Description:</strong> {{ book.description }}</p>
+	<p><strong>Rating:</strong> {{ book.rate }}</p>
+	<p><strong>Start date:</strong> {{ book.dateStart | date }}</p>
+	<p><strong>Read date:</strong> {{ book.dateRead | date }}</p>
+	<button class="edit" [routerLink]="['/update-book/', book.id]">Edit</button>
+	<button class="back" [routerLink]="['/books']">Back</button>
+	<button class="delete" (click)="deleteBook(book.id)">Delete</button>
+</div>
